@@ -1,20 +1,22 @@
 // conf.js
 
-require("babel-register")({
-  presets: [ 'es2015' ]
-});
+require("@babel/register")({
+    presets: ["@babel/preset-env"]
+  });
 
 exports.config = {
-  specs: ['spec.js'],
+      
+  specs: ['./specs/*.js'],
   framework: 'jasmine',
 
   onPrepare: () => {
-      // set browser size...
-      browser.manage().window().setSize(1024, 800);
 
-      // better jasmine 2 reports...
-      const SpecReporter = require('jasmine-spec-reporter');
-      jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: 'specs'}));
+    // set browser size...
+    browser.manage().window().setSize(1024, 800);
+
+    // better jasmine 2 reports...
+    const SpecReporter = require('jasmine-spec-reporter');
+    jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: 'specs'}));
   },
 
   capabilities: {
